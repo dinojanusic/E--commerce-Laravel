@@ -10,9 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+require 'admin.php';
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Auth::routes();
 
-Route::view('/admin', 'admin.dashboard.index');
+Route::view('/', 'site.pages.homepage');
+
+Route::get('/category/{slug}', 'Site\CategoryController@show')->name('category.show');
+
+Route::get('/product/{slug}', 'Site\ProductController@show')->name('product.show');
